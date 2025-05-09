@@ -82,7 +82,7 @@ describe('server', () => {
   test('returns matching card based on given cardId', async () => {
     const expected = {
       title: 'card 1 title',
-      price: 200,
+      price: "£2.00",
       availableSizes: ["sm", "md", "gt"],
       imageUrl: '/front-cover-portrait-1.jpg',
       pages: [

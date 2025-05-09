@@ -74,7 +74,7 @@ describe('getCardById', () => {
           const cardId = "card001";
           const expected = {
             title: 'card 1 title',
-            price: 200,
+            price: "£2.00",
             availableSizes: ["sm", "md", "gt"],
             imageUrl: '/front-cover-portrait-1.jpg',
             pages: [

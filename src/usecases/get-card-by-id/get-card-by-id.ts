@@ -13,10 +13,14 @@ export const getCardById = async (cardId: string, sizeId?: string) => {
 
         const card = cards.find(card => card.id === cardId);
         const pages = card.pages.map(page => templates.find(temp => temp.id === page.templateId));
+        let completedCard = { 
+            title: card.title,
+            imageUrl: pages[0].imageUrl,
+            pages
+        };
 
         if(sizeId) {
             const selectedSize = sizes.find(size => size.id === sizeId);
-
             const price = formatAmountInPounds((card.basePrice * selectedSize.priceMultiplier) / 100);
 
             const availableSizes = card.sizes.map((size) => sizes.find(cardSize => {
@@ -27,22 +31,19 @@ export const getCardById = async (cardId: string, sizeId?: string) => {
             }));
             
             return {
-                title: card.title,
+                ...completedCard,
                 size: sizeId,
                 availableSizes,
-                imageUrl: pages[0].imageUrl,
-                price, 
-                pages
+                price
             }
         }
 
         return {
-            title: card.title,
-            price: card.basePrice,
-            availableSizes: card.sizes,
-            imageUrl: pages[0].imageUrl,
-            pages
+            ...completedCard,
+            price: formatAmountInPounds(card.basePrice / 100),
+            availableSizes: card.sizes
         }
+
         
     } catch (err) {
         if (sizeId) {
