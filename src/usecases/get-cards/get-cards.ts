@@ -13,7 +13,7 @@ export const getCards = async () => {
                 imageUrl: template.imageUrl,
                 url: `card/${card.id}`
             }
-        })
+        });
     } catch (err) {
         throw new Error("Unable to fetch cards");
     }

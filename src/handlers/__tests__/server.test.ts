@@ -4,18 +4,18 @@ import { app } from '../server'
 describe('server', () => {
 
   beforeEach(() => {
-    jest.useFakeTimers({ legacyFakeTimers: true })
+    jest.useFakeTimers({ legacyFakeTimers: true });
   })
 
   test('returns matching card title', async () => {
-    const response = await request(app).get('/cards')
+    const response = await request(app).get('/cards');
 
-    expect(response.status).toBe(200)
+    expect(response.status).toBe(200);
     expect(response.body).toEqual(expect.objectContaining([
       {"imageUrl": "/front-cover-portrait-1.jpg", "title": "card 1 title", "url": "card/card001"}, 
       {"imageUrl": "/front-cover-portrait-2.jpg", "title": "card 2 title", "url": "card/card002"}, 
       {"imageUrl": "/front-cover-landscape.jpg", "title": "card 3 title", "url": "card/card003"}
-    ]))
+    ]));
   })
 
   test('returns matching card based on given cardId and sizeId', async () => {
@@ -64,19 +64,19 @@ describe('server', () => {
       ]
     };
 
-    const response = await request(app).get('/cards/card001/gt')
+    const response = await request(app).get('/cards/card001/gt');
 
-    expect(response.status).toBe(200)
-    expect(response.body).toEqual(expect.objectContaining(expected))
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(expect.objectContaining(expected));
   })
 
   test('returns error when card not found by cardId and sizeId', async () => {
     const expected = {error: "Failed to get card for cardId: card007 with sizeId: gt"};
     
-    const response = await request(app).get('/cards/card007/gt')
+    const response = await request(app).get('/cards/card007/gt');
 
-    expect(response.status).toBe(500)
-    expect(JSON.parse(response.text)).toEqual(expected)
+    expect(response.status).toBe(500);
+    expect(JSON.parse(response.text)).toEqual(expected);
   })
 
   test('returns matching card based on given cardId', async () => {
@@ -113,19 +113,19 @@ describe('server', () => {
       ]
     };
     
-    const response = await request(app).get('/cards/card001')
+    const response = await request(app).get('/cards/card001');
 
-    expect(response.status).toBe(200)
-    expect(response.body).toEqual(expect.objectContaining(expected))
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(expect.objectContaining(expected));
   })
 
   test('returns error when card not found', async () => {
     const expected = {error: "Failed to get card for cardId: card007"};
     
-    const response = await request(app).get('/cards/card007')
+    const response = await request(app).get('/cards/card007');
 
-    expect(response.status).toBe(500)
-    expect(JSON.parse(response.text)).toEqual(expected)
+    expect(response.status).toBe(500);
+    expect(JSON.parse(response.text)).toEqual(expected);
   })
 })
 

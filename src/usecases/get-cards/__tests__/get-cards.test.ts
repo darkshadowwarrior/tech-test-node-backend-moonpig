@@ -2,11 +2,11 @@ import { getCards } from "../get-cards";
 import { Card } from "../../../types/card";
 import { cardsService } from "../../../services/card-service";
 import { templatesService } from "../../../services/template-service";
-import { mocked } from 'jest-mock'
+import { mocked } from 'jest-mock';
 import { mockDeep } from 'jest-mock-extended';
 
-jest.mock('../../../services/card-service')
-jest.mock('../../../services/template-service')
+jest.mock('../../../services/card-service');
+jest.mock('../../../services/template-service');
 
 const mockCardService = mocked(cardsService);
 const mockTemplatesService = mocked(templatesService);
@@ -34,7 +34,7 @@ describe('getCards', () => {
             "templateId": "template004"
           }
         ]
-      }]))
+      }]));
 
       mockTemplatesService.mockResolvedValue([
         {
@@ -43,7 +43,7 @@ describe('getCards', () => {
           "height": 600,
           "imageUrl": "/front-cover-portrait-1.jpg"
         }
-      ])
+      ]);
       
       const received = await getCards();
 
@@ -82,7 +82,7 @@ describe('getCards', () => {
             "templateId": "template004"
           }
         ]
-      }]))
+      }]));
 
       mockTemplatesService.mockRejectedValue(new Error("template service returned 500"));
       

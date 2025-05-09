@@ -2,7 +2,7 @@ import express from "express";
 import { getCards } from "../usecases/get-cards/get-cards";
 import { getCardById } from "../usecases/get-card-by-id/get-card-by-id";
 
-export const app = express()
+export const app = express();
 
 app.set('json spaces', 2);
 

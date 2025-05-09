@@ -47,8 +47,8 @@ export const getCardById = async (cardId: string, sizeId?: string) => {
         
     } catch (err) {
         if (sizeId) {
-            throw new Error(`Failed to get card for cardId: ${cardId} with sizeId: ${sizeId}`)
+            throw new Error(`Failed to get card for cardId: ${cardId} with sizeId: ${sizeId}`);
         }
-        throw new Error(`Failed to get card for cardId: ${cardId}`)
+        throw new Error(`Failed to get card for cardId: ${cardId}`);
     }
 }

@@ -1,4 +1,4 @@
-import { mocked } from 'jest-mock'
+import { mocked } from 'jest-mock';
 import { cardsService } from '../../../services/card-service';
 import { templatesService } from '../../../services/template-service';
 import { getCardById } from '../get-card-by-id';
@@ -6,9 +6,9 @@ import { mockDeep } from 'jest-mock-extended';
 import { Card } from '../../../types/card';
 import { sizesService } from '../../../services/sizes-service';
 
-jest.mock('../../../services/card-service')
-jest.mock('../../../services/template-service')
-jest.mock('../../../services/sizes-service')
+jest.mock('../../../services/card-service');
+jest.mock('../../../services/template-service');
+jest.mock('../../../services/sizes-service');
 
 const mockCardService = mocked(cardsService);
 const mockTemplatesService = mocked(templatesService);
@@ -41,7 +41,7 @@ describe('getCardById', () => {
                 }
               ]
             }
-          ])
+          ]);
     
           mockTemplatesService.mockResolvedValue([
                 {
@@ -69,7 +69,7 @@ describe('getCardById', () => {
                 "imageUrl": "/back-cover-portrait.jpg"
                 }
             ]
-          )
+          );
 
           const cardId = "card001";
           const expected = {
@@ -138,7 +138,7 @@ describe('getCardById', () => {
             "templateId": "template004"
           }
         ]
-      }]))
+      }]));
 
       mockTemplatesService.mockRejectedValue(new Error("template service returned 500"));
       
@@ -171,7 +171,7 @@ describe('getCardById', () => {
               }
             ]
           }
-        ])
+        ]);
   
         mockTemplatesService.mockResolvedValue([
             {
@@ -199,7 +199,7 @@ describe('getCardById', () => {
               "imageUrl": "/back-cover-portrait.jpg"
             }
           ]
-        )
+        );
 
         mockSizesService.mockResolvedValue([
           {
@@ -222,7 +222,7 @@ describe('getCardById', () => {
             "title": "Giant",
             "priceMultiplier": 2
           }
-        ])
+        ]);
 
         const cardId = "card001";
         const sizeId = 'gt';
@@ -270,7 +270,8 @@ describe('getCardById', () => {
               width: 300,
             }
           ]
-        }
+        };
+        
         const received = await getCardById(cardId, sizeId);
 
         expect(received).toEqual(expected);
