@@ -12,18 +12,13 @@ app.get('/cards', async (req, res) => {
   res.status(200).send(cards);
 })
 
-app.get('/cards/:cardId', async (req, res) => {
+app.get('/cards/:cardId/:sizeId?', async (req, res, next) => {
   // respond with card by id
   const params = req.params;
-
-  const cards = await getCardById(params.cardId);
-  res.status(200).send(cards);
-})
-
-app.get('/cards/:cardId/:sizeId?', async (req, res) => {
-  // respond with card by id
-  const params = req.params;
-
-  const cards = await getCardById(params.cardId, params.sizeId);
-  res.status(200).send(cards);
+  try {
+    const card = await getCardById(params.cardId, params.sizeId);
+    res.status(200).send(card);
+  } catch (err) {
+    res.status(500).send({error: err.message});
+  }
 })
