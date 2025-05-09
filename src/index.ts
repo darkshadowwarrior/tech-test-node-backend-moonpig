@@ -1,4 +1,4 @@
-import { app } from './server'
+import { app } from './handlers/server'
 
 const PORT = 7000
 
