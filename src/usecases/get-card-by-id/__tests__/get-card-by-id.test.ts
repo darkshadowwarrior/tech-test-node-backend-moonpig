@@ -224,8 +224,6 @@ describe('getCardById', () => {
           }
         ])
 
-        //mockFormatAmountinPounds.mockReturnValue("£4.00");
-
         const cardId = "card001";
         const sizeId = 'gt';
 
