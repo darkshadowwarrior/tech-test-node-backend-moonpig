@@ -12,5 +12,6 @@ TODO: <br />
     - I'm not returning a typed object from the usecases - this needs to be updated <br />
     - Add tests for formatAmountInPounds - not a hard requirement but a nice to have in case something changes and it breaks<br />
 
-Ideas:<br />
-    - I am still using the same axios code for all services. This could be a single service but leaving it as is for seperation of concerns
+Ideas and thoughts:<br />
+    - I am still using the same axios code for all services. This could be a single service but leaving it as is for seperation of concerns<br />
+    - Could we change the types to domain objects and introduce inheritence or is this overkill for this small application?
